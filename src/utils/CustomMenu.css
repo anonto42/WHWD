@@ -1,0 +1,37 @@
+/* To ensure menu items and submenus also have transparent backgrounds
+   so the main gradient shines through */
+.gradient-menu .ant-menu-item,
+.gradient-menu .ant-menu-submenu-title {
+  background-color: transparent !important;
+  color: white; /* Ensure text is visible */
+}
+
+/* For selected/active items, you might want a subtle effect or no background */
+.gradient-menu .ant-menu-item-selected {
+  background-image: linear-gradient(
+    to right,
+    #905e26,
+    #f1cc47,
+    #d4c962
+  ) !important;
+  color: white;
+}
+
+/* For hover states */
+.gradient-menu .ant-menu-item:hover,
+.gradient-menu .ant-menu-submenu-title:hover {
+  background-image: linear-gradient(
+    to right,
+    #c08440,
+    #b8a14f,
+    #cec571
+  ) !important;
+  color: white;
+}
+
+/* Custom CSS to apply gradient background to table header */
+.ant-table-thead > tr > th {
+  background: linear-gradient(90deg, #f5ec9b, #f1cc47);
+  color: #333; /* Adjust text color */
+  font-weight: bold;
+}
