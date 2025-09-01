@@ -39,7 +39,7 @@ const WhisperManagement = () => {
   const [whisperName, setWhisperName] = useState("");
   const [whisperSherpas, setWisperSherpas] = useState("");
   const [category, setCategory] = useState(null);
-  const [timer, setTimer] = useState(null);
+  // const [timer, setTimer] = useState(null);
 
   // audio files
   const [englishAudio, setEnglishAudio] = useState([]);
@@ -97,7 +97,7 @@ const WhisperManagement = () => {
       setWhisperName(whisper.whisperName);
       setWisperSherpas(whisper.whisperSherpas);
       setCategory(whisper.whisperCategory);
-      setTimer(whisper.timer);
+      // setTimer(whisper.timer);
       setEnglishAudio([whisper.EnglishFile || ""]); // prepopulate audio file paths
       setDeutschAudio([whisper.DeutschFile || ""]);
       setFrancaisAudio([whisper.FrancaisFile || ""]);
@@ -112,7 +112,7 @@ const WhisperManagement = () => {
       setWhisperName("");
       setWisperSherpas("");
       setCategory(null);
-      setTimer(null);
+      // setTimer(null);
       setEnglishAudio([]);
       setDeutschAudio([]);
       setFrancaisAudio([]);
@@ -122,6 +122,7 @@ const WhisperManagement = () => {
       setFrancaisLrc([]);
       setEspanolLrc([]);
       setCoverImage(null);
+      setImagePreview(null);
     }
     setShowAddEditModal(true);
   };
@@ -132,7 +133,7 @@ const WhisperManagement = () => {
     setWhisperName("");
     setWisperSherpas("");
     setCategory(null);
-    setTimer(null);
+    // setTimer(null);
     setEnglishAudio([]);
     setDeutschAudio([]);
     setFrancaisAudio([]);
@@ -142,6 +143,7 @@ const WhisperManagement = () => {
     setFrancaisLrc([]);
     setEspanolLrc([]);
     setCoverImage(null);
+    setImagePreview(null);
   };
 
   const handleSubmit = async () => {
@@ -163,7 +165,7 @@ const WhisperManagement = () => {
       whisperName,
       whisperSherpas,
       category,
-      timer,
+      // timer,
       coverImage,
       audioFiles: [
         englishAudio[0],
@@ -182,7 +184,7 @@ const WhisperManagement = () => {
     formData.append("whisperName", whisperName);
     formData.append("whisperSherpas", whisperSherpas);
     formData.append("whisperCategory", category);
-    formData.append("timer", timer);
+    // formData.append("timer", timer);
     formData.append("whisperCoverImage", coverImage);
 
     formData.append(
@@ -480,12 +482,21 @@ const WhisperManagement = () => {
                   </div>
                 </Upload>
               </Button>{" "}
-              {coverImage && (
+              {imagePreview ? (
                 <img
                   src={imagePreview}
                   alt="Cover"
                   className="w-40 h-20 rounded-lg"
                 />
+              ) : (
+                currentWhisper &&
+                currentWhisper.whisperCoverImage && (
+                  <img
+                    src={`${imageUrl}${currentWhisper.whisperCoverImage}`}
+                    alt="Cover"
+                    className="w-40 h-20 rounded-lg"
+                  />
+                )
               )}
             </div>
             <div className="flex flex-wrap items-center gap-4">
@@ -578,7 +589,7 @@ const WhisperManagement = () => {
               />
             </div>
             <div className="flex items-start gap-5">
-              <Select
+              {/* <Select
                 value={timer}
                 onChange={(value) => setTimer(value)}
                 placeholder="Select Timer"
@@ -593,7 +604,7 @@ const WhisperManagement = () => {
                     {timer}
                   </Select.Option>
                 ))}
-              </Select>
+              </Select> */}
               <Select
                 value={category}
                 onChange={(value) => setCategory(value)}
